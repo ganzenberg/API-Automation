@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-07-02T23:05:37.178940" rpa="false" schemaversion="5">
+<suite id="s1" name="APIAutomation" source="/Users/ganeshkumar/PycharmProjects/APIAutomation">
+<suite id="s1-s1" name="TestCases" source="/Users/ganeshkumar/PycharmProjects/APIAutomation/TestCases">
+<suite id="s1-s1-s1" name="TC Test VideoGameDB" source="/Users/ganeshkumar/PycharmProjects/APIAutomation/TestCases/TC_Test_VideoGameDB.robot">
+<test id="s1-s1-s1-t1" name="Get_game_list" line="45">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-02T23:05:37.249284" level="INFO">Creating Session using : alias=mysession, url=https://videogamedb.uk:443, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-02T23:05:37.249055" elapsed="0.000377"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2024-07-02T23:05:37.249763" level="INFO">${auth_value} = </msg>
+<var>${auth_value}</var>
+<arg>${auth_token}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2024-07-02T23:05:37.249581" elapsed="0.000200"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-07-02T23:05:38.437262" level="INFO">GET Request : url=https://videogamedb.uk:443/api/videogame 
+ path_url=/api/videogame 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-07-02T23:05:38.437427" level="INFO">GET Response : url=https://videogamedb.uk:443/api/videogame 
+ status=200, reason= 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'Strict-Transport-Security': 'max-age=31536000 ; includeSubDomains', 'X-Frame-Options': 'DENY', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Date': 'Tue, 02 Jul 2024 17:35:38 GMT', 'Keep-Alive': 'timeout=60', 'Connection': 'keep-alive'} 
+ body=[{"id":1,"name":"Resident Evil 4","releaseDate":"2005-10-01 23:59:59","reviewScore":85,"category":"Shooter","rating":"Universal"},{"id":2,"name":"Gran Turismo 3","releaseDate":"2001-03-10 23:59:59","reviewScore":91,"category":"Driving","rating":"Universal"},{"id":3,"name":"Tetris","releaseDate":"1984-06-25 23:59:59","reviewScore":88,"category":"Puzzle","rating":"Universal"},{"id":4,"name":"Super Mario 64","releaseDate":"1996-10-20 23:59:59","reviewScore":90,"category":"Platform","rating":"Universal"},{"id":5,"name":"The Legend of Zelda: Ocarina of Time","releaseDate":"1998-12-10 23:59:59","reviewScore":93,"category":"Adventure","rating":"PG-13"},{"id":6,"name":"Doom","releaseDate":"1993-02-18 23:59:59","reviewScore":81,"category":"Shooter","rating":"Mature"},{"id":7,"name":"Minecraft","releaseDate":"2011-12-05 23:59:59","reviewScore":77,"category":"Puzzle","rating":"Universal"},{"id":8,"name":"SimCity 2000","releaseDate":"1994-09-11 23:59:59","reviewScore":88,"category":"Strategy","rating":"Universal"},{"id":9,"name":"Final Fantasy VII","releaseDate":"1997-08-20 23:59:59","reviewScore":97,"category":"RPG","rating":"PG-13"},{"id":10,"name":"Grand Theft Auto III","releaseDate":"2001-04-23 23:59:59","reviewScore":90,"category":"Driving","rating":"Mature"}] 
+ </msg>
+<msg time="2024-07-02T23:05:38.437523" level="INFO">/Users/ganeshkumar/PycharmProjects/pythonProject/venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'videogamedb.uk'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg time="2024-07-02T23:05:38.437722" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/api/videogame</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-02T23:05:37.249904" elapsed="1.187845"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.438198" elapsed="0.000655"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.438991" elapsed="0.000687"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${auth_value}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.439836" elapsed="0.000161"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-02T23:05:38.440532" level="INFO">${response_status} = 200</msg>
+<var>${response_status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.440114" elapsed="0.000438"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response_status}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.440671" elapsed="0.000148"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-07-02T23:05:38.441353" level="INFO">${response_body} = [{"id":1,"name":"Resident Evil 4","releaseDate":"2005-10-01 23:59:59","reviewScore":85,"category":"Shooter","rating":"Universal"},{"id":2,"name":"Gran Turismo 3","releaseDate":"2001-03-10 23:59:59","r...</msg>
+<var>${response_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.440929" elapsed="0.000445"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response_body}</arg>
+<arg>Grand Theft Auto III</arg>
+<arg>Final Fantasy VII</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-07-02T23:05:38.441500" elapsed="0.000154"/>
+</kw>
+<status status="PASS" start="2024-07-02T23:05:37.248443" elapsed="1.193342"/>
+</test>
+<status status="PASS" start="2024-07-02T23:05:37.196707" elapsed="1.245410"/>
+</suite>
+<status status="PASS" start="2024-07-02T23:05:37.195921" elapsed="1.246664"/>
+</suite>
+<status status="PASS" start="2024-07-02T23:05:37.180466" elapsed="1.262602"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="APIAutomation">APIAutomation</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="TestCases">APIAutomation.TestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="TC Test VideoGameDB">APIAutomation.TestCases.TC Test VideoGameDB</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
